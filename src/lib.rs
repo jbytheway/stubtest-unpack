@@ -2,6 +2,7 @@ use pyo3::prelude::*;
 
 /// A Python module implemented in Rust.
 #[pymodule]
+#[pyo3(name = "_rust")]
 mod stubtest_unpack {
     use pyo3::prelude::*;
 
