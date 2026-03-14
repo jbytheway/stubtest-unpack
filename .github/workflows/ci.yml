@@ -34,12 +34,9 @@ jobs:
       #    manylinux: auto
       - name: mypy
         shell: bash
-        run: |
-          set -e
-          python3 -m venv .venv
-          source .venv/bin/activate
-          pip install .
-          pip install mypy
-          mypy python
-          stubtest stubtest_unpack._rust
+        run:
+          - python3 -m venv .venv
+          - ./.venv/bin/pip install mypy .
+          - ./.venv/bin/mypy python
+          - ./.venv/bin/stubtest stubtest_unpack._rust
 
