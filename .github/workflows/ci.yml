@@ -25,17 +25,18 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: 3.x
-      - name: Build wheels
-        uses: PyO3/maturin-action@v1
-        with:
-          target: ${{ matrix.platform.target }}
-          args: --release --out dist --find-interpreter
-          sccache: ${{ !startsWith(github.ref, 'refs/tags/') }}
-          manylinux: auto
-      - name: pytest
+      #- name: Build wheels
+      #  uses: PyO3/maturin-action@v1
+      #  with:
+      #    target: ${{ matrix.platform.target }}
+      #    args: --release --out dist --find-interpreter
+      #    sccache: ${{ !startsWith(github.ref, 'refs/tags/') }}
+      #    manylinux: auto
+      - name: mypy
         shell: bash
         run: |
           set -e
+          cargo build
           python3 -m venv .venv
           source .venv/bin/activate
           pip install .
