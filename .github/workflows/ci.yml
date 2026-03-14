@@ -38,8 +38,8 @@ jobs:
           set -e
           python3 -m venv .venv
           source .venv/bin/activate
-          pip install stubtest-unpack --find-links dist --force-reinstall
+          pip install .
           pip install mypy
           mypy python
-          stubtest stubtest_unpack
+          stubtest stubtest_unpack._rust
 
